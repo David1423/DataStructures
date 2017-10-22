@@ -111,49 +111,49 @@ class BinarySearch
         }
         public int Search(int a[],int len,int x, int first) // Binary Search using recursion
         {
-            int mid = (first+len)/2;
+            int mid = (first+len)/2; //Caluclating the mid value
             System.out.println("\n\tThe Mid Value is "+mid);
-           if(len >= first)
+           if(len >= first) //checking if the first and Last Pointers cross each other
             {
             try
             {
-            if(first == len && x != a[mid])
+            if(first == len && x != a[mid]) //if the mid,first,last points to one element which is not the required  one
             {
-                return -1;
+                return -1; // Unsuccessful search
             }
-            if(x == a[mid])
+            if(x == a[mid]) // IF the Element to be searched is exactly at the mid position
             {
                 System.out.println("\nThe Element  '\u001B[42m"+x+"\u001B[0m' is Present at the Position \u001B[42m|"+(mid+1)+"|\u001b[0m");
-                return 1;
+                return 1; // here it is Successful search
             }
-            else if(x<a[mid])
+            else if(x<a[mid]) //Required element would be before the mid pointing element
             {
                 len = mid-1;
-                if(len < 0)
+                if(len < 0) //checking if the last pointer is comelty moved off from [0] index 
                 {
                        
-                    return -1;
+                    return -1; // searching array is compeleted
                 }
                 else
-                   return Search(a,len,x,first);
+                   return Search(a,len,x,first); //attempting for the recursion like next iteration
             }
             else if(x>a[mid])
             {
                 first = mid+1;
-                if(first >= a.length)
+                if(first >= a.length) //checking if the first pointer is comelty moved off from last index 
                 {
                    
-                    return -1;
+                    return -1; // searching array is completed
                 }
                     
                 else
-                     return Search(a,len,x,first);
+                     return Search(a,len,x,first); //attempting for the recursion like next iteration
             }
             
             }
             catch(Exception e){ }
         }
         System.out.println("End of the Search");
-        return -1;
+        return -1; // unsuccessful search
     }
 }
