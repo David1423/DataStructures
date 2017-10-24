@@ -7,7 +7,7 @@ public class simplejava
     public static void main(String[] args)
 
     {
-        long startTime = System.currentTimeMillis(); //caluclating the Time taken to execute the whole prgoram in mSeconds
+    long startTime = System.currentTimeMillis(); //calculating the Time taken to execute the whole prgoram in mSeconds
     System.out.println("\t!!! BINARY SEARCH !!!");
     int a[] = {109,78,32,65,98}; // the array initialized need to be dynamic xxxxxx
     Scanner s = new Scanner(System.in); //scanner from the util package
@@ -16,7 +16,9 @@ public class simplejava
     BinarySearch bs = new BinarySearch(a,a.length,x); // calling the BinarySearch Constructor
     System.out.println("\n\t"+bs);
     s.close();  // object to be closed
-        System.out.println("The Total Program Execution has taken '"+(System.currentTimeMillis()-startTime)+"' Milli Seconds or '"+((System.currentTimeMillis()-startTime)/1000)+"' Seconds");
+
+    //can you use a string builder instead of concatinating strings with +
+    System.out.println("The Total Program Execution has taken '"+(System.currentTimeMillis()-startTime)+"' Milli Seconds or '"+((System.currentTimeMillis()-startTime)/1000)+"' Seconds");
     }
 
 }
@@ -24,7 +26,10 @@ public class simplejava
 // To apply binary search the Array should be sorted
 class BinarySearch
 {
-     BinarySearch(int a[],int len, int x) // class Constructor
+    //where is the access specifier?
+    //always the variables should provide readability for example BinarySearch(int items[],int arrayLength,.....)
+    //if you are sending the array why do you need to send the length of the array to the function? you could always calculate from the array that you have got!!! isn't it!!
+    BinarySearch(int a[],int len, int x) // class Constructor   
     {
         if(a.length == 0) //checking if the Array is Empty
         {
@@ -33,6 +38,8 @@ class BinarySearch
         }
         else 
         {
+            // what is the need to check for sorting? if you throw the collection to the sorting algorithms and if the array is already sorted then it would have done in same time complexity O(n).
+            // i think instead of checking, you should directly send the collection to the sort algorithm.
             for(int i=0; i<len; i++) // If the Given array is not sorted it would be Sorted using the Bubble Sort Tech
             {
                 try
@@ -54,7 +61,7 @@ class BinarySearch
                 }
                 
                 } //END OF try BLOCK
-            
+            //why there is no statements in catch exception???????
             catch(Exception e){}
             }// for loop Ends 
             
@@ -63,17 +70,15 @@ class BinarySearch
         System.out.println("\n\n  ...Applying Binary Search With Recursion Tech");
         long start = System.nanoTime(); // Starting the timer for the Binary search Before calling the Method
         int ret = Search(a,len-1,x,0); // calling the Search method with params as a, last index, Element to be searched, first index
+        long end = System.nanoTime()-start; // timer ends at succesful search
+        System.out.println("The Binary Search Took about '"+end+"' nano Seconds or '"+(end/1000)+"' Milli seconds");
         if(ret < 0 ) // checking if the Search is unsuccessfull
         {
-            long end = System.nanoTime()-start; // timer ends at unsuccesfull search
-            System.out.println("The Binary Search Took about '"+end+"' nano Seconds or '"+(end/1000)+"' Milli seconds");
             System.out.println("\nThe Element '\033[1;41m "+x+"\u001B[0m' is not present in the Given Array"); //number in red Background
             System.out.println("\033[1;31m\n\t////////// Search Unsuccessful //////////\u001B[0m"); //print in red color
         }
         else // if the search is successful
         {
-            long end = System.nanoTime()-start; // timer ends at succesful search
-            System.out.println("The Binary Search Took about '"+end+"' nano Seconds or '"+(end/1000)+"' Milli seconds");
             System.out.println("\033[1;32m\n\t/////////////// Search Successful /////////////////\033[0m"); // print in green color
         }   
         }
@@ -110,7 +115,7 @@ class BinarySearch
     
         }// sorting  method
     
-    
+        //what is the use of first if it is always zero????? you are including a lot of extra information which is not needed, clean the code and make it brief and neat.
         public int Search(int a[],int len,int x, int first) // Binary Search using recursion
         {
             int mid = (first+len)/2; //Caluclating the mid value
