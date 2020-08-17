@@ -1,2 +1,2 @@
 # DataStructures
-Simple Binary Search
+Data Structures and Algorithms
